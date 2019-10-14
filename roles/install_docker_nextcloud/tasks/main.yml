@@ -1,0 +1,21 @@
+---
+- name: Create a docker network
+  docker_network:
+    name: nextcloud_nw
+
+- name: Start a container with nextcloud
+  docker_container:
+    name: nextcloud
+    image: nextcloud:latest
+    published_ports: 80:80
+    networks:
+      - name: nextcloud_nw
+
+- name: Start a container with mariadb
+  docker_container:
+    name: nextcloud_db
+    image: mariadb
+    networks:
+      - name: nextcloud_nw
+    env:
+      MYSQL_ROOT_PASSWORD="12345678"
