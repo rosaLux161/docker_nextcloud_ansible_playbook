@@ -18,4 +18,4 @@
     networks:
       - name: nextcloud_nw
     env:
-      MYSQL_ROOT_PASSWORD="12345678"
+      MYSQL_ROOT_PASSWORD=""
